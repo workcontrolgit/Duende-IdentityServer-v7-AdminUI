@@ -359,8 +359,8 @@ GO
 CREATE UNIQUE INDEX [IX_ClientScopes_ClientId_Scope] ON [ClientScopes] ([ClientId], [Scope]);
 GO
 
---CREATE UNIQUE INDEX [IX_ClientRedirectUris_ClientId_RedirectUri] ON [ClientRedirectUris] ([ClientId], [RedirectUri]);
---GO
+CREATE UNIQUE INDEX [IX_ClientRedirectUris_ClientId_RedirectUri] ON [ClientRedirectUris] ([ClientId], [RedirectUri]);
+GO
 
 CREATE UNIQUE INDEX [IX_ClientProperties_ClientId_Key] ON [ClientProperties] ([ClientId], [Key]);
 GO
@@ -410,34 +410,6 @@ GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
 VALUES (N'20221115182001_UpdateToIS61', N'8.0.6');
-GO
-
-COMMIT;
-GO
-
-BEGIN TRANSACTION;
-GO
-
-ALTER TABLE [Clients] ADD [DPoPClockSkew] time NOT NULL DEFAULT '00:00:00';
-GO
-
-ALTER TABLE [Clients] ADD [DPoPValidationMode] int NOT NULL DEFAULT 0;
-GO
-
-ALTER TABLE [Clients] ADD [InitiateLoginUri] nvarchar(2000) NULL;
-GO
-
-ALTER TABLE [Clients] ADD [PushedAuthorizationLifetime] int NULL;
-GO
-
-ALTER TABLE [Clients] ADD [RequireDPoP] bit NOT NULL DEFAULT CAST(0 AS bit);
-GO
-
-ALTER TABLE [Clients] ADD [RequirePushedAuthorization] bit NOT NULL DEFAULT CAST(0 AS bit);
-GO
-
-INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20240206133328_IdentityServerV7', N'8.0.6');
 GO
 
 COMMIT;
