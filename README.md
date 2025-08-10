@@ -144,32 +144,6 @@ Configure OIDC client settings in `AdminConfiguration` section:
 }
 ```
 
-## Database Migration
-
-### Upgrading from IdentityServer v6 to v7
-
-Use the provided migration scripts:
-
-```bash
-# Generate migration scripts
-Script-Migration -From DbInit -To UpdateToIS61 -StartupProject Duende.Admin -Project Duende.Admin.EntityFramework.SqlServer -Context IdentityServerPersistedGrantDbContext -Output PersistedGrantMigrationScriptDuendeV6.sql -Verbose
-
-Script-Migration -From DbInit -To UpdateToIS61 -StartupProject Duende.Admin -Project Duende.Admin.EntityFramework.SqlServer -Context IdentityServerConfigurationDbContext -Output ConfigurationMigrationScriptDuendeV6.sql -Verbose
-
-Script-Migration -From UpdateToIS61 -StartupProject Duende.Admin -Project Duende.Admin.EntityFramework.SqlServer -Context IdentityServerPersistedGrantDbContext -Output PersistedGrantMigrationScriptDuendeV7.sql -Verbose 
-
-Script-Migration -From UpdateToIS61 -StartupProject Duende.Admin -Project Duende.Admin.EntityFramework.SqlServer -Context IdentityServerConfigurationDbContext -Output ConfigurationMigrationScriptDuendeV7.sql -Verbose
-```
-
-### Manual Migrations
-
-```bash
-# Add new migration
-dotnet ef migrations add <MigrationName> --project src/Duende.Admin.EntityFramework.SqlServer --startup-project src/Duende.Admin --context IdentityServerConfigurationDbContext
-
-# Update database
-dotnet ef database update --project src/Duende.Admin.EntityFramework.SqlServer --startup-project src/Duende.Admin --context IdentityServerConfigurationDbContext
-```
 
 ## Development Workflow
 
