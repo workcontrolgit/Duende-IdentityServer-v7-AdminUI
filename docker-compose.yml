@@ -26,12 +26,13 @@ services:
     container_name: skoruba-duende-identityserver-admin
     environment:
       - VIRTUAL_HOST=admin.skoruba.local
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - VIRTUAL_PORT=8080
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
       - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.skoruba.local'
       - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.skoruba.local/signin-oidc'
       - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.skoruba.local'
@@ -64,15 +65,16 @@ services:
     container_name: skoruba-duende-identityserver-admin-api
     environment:
       - VIRTUAL_HOST=admin-api.skoruba.local
+      - VIRTUAL_PORT=8080
       - AdminApiConfiguration__RequireHttpsMetadata=false
       - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.skoruba.local'
       - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.skoruba.local'
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
       - DockerConfiguration__UpdateCaCertificate=true
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
@@ -88,10 +90,11 @@ services:
     container_name: skoruba-duende-identityserver-sts-identity
     environment:
       - VIRTUAL_HOST=sts.skoruba.local
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - VIRTUAL_PORT=8080
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdminDB7Master;User Id=sa;Password=${DB_PASSWORD:-Password_123};TrustServerCertificate=True;MultipleActiveResultSets=true'
       - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.skoruba.local'
       - 'AdvancedConfiguration__IssuerUri=https://sts.skoruba.local'
       - DockerConfiguration__UpdateCaCertificate=true

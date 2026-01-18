@@ -25,6 +25,7 @@
         "Description": "Your user profile information (first name, last name, etc.)",
         "Emphasize": true,
         "UserClaims": [
+          "role",
           "name",
           "family_name",
           "given_name",
@@ -88,7 +89,26 @@
           "role",
           "name"
         ]
+      },
+      {
+        "Name": "app.api.talentmanagement.write",
+        "DisplayName": "app.api.employeeprofile.write",
+        "Required": true,
+        "UserClaims": [
+          "role",
+          "name"
+        ]
+      },
+      {
+        "Name": "app.api.talentmanagement.read",
+        "DisplayName": "app.api.employeeprofile.read",
+        "Required": true,
+        "UserClaims": [
+          "role",
+          "name"
+        ]
       }
+
     ],
     "ApiResources": [
       {
@@ -201,14 +221,17 @@
         "AllowedGrantTypes": [
           "authorization_code"
         ],
+        "AlwaysIncludeUserClaimsInIdToken": true,
         "RequirePkce": true,
         "AllowOfflineAccess": true,
         "RequireClientSecret": false,
         "RedirectUris": [
           "http://localhost:4200",
-          "http://localhost:4200/silent-refresh.html",
           "https://localhost:4200",
-          "https://localhost:4200/silent-refresh.html"
+          "http://localhost:4200/silent-refresh.html",
+          "https://localhost:4200/silent-refresh.html",
+          "http://localhost:4200/callback",
+          "https://localhost:4200/callback"
         ],
         "PostLogoutRedirectUris": [
           "http://localhost:4200",
@@ -223,7 +246,8 @@
           "email",
           "profile",
           "roles",
-          "app.api.employeeprofile.read"
+          "app.api.talentmanagement.read",
+          "app.api.talentmanagement.write"
         ]
       },
       {
