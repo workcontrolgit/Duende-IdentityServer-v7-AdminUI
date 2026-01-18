@@ -122,6 +122,13 @@
         "Scopes": [
           "app.api.employeeprofile.read"
         ]
+      },
+      {
+        "Name": "app.api.talentmanagement",
+        "Scopes": [
+          "app.api.talentmanagement.read",
+          "app.api.talentmanagement.write"
+        ]
       }
     ],
     "Clients": [

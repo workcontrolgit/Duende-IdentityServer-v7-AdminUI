@@ -52,8 +52,8 @@ services:
       - duende.sts.identity
     volumes:
       - './shared/serilog.json:/app/serilog.json'
-      - './shared/identitydata.json:/app/identitydata.json'
-      - './shared/identityserverdata.json:/app/identityserverdata.json'
+      - './src/Duende.Admin/identitydata.json:/app/identitydata.json'
+      - './src/Duende.Admin/identityserverdata.json:/app/identityserverdata.json'
       - './shared/nginx/certs/cacerts.crt:/usr/local/share/ca-certificates/cacerts.crt'
     networks:
       identityserverui: null
